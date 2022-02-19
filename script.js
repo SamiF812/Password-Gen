@@ -5,62 +5,61 @@ var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'
 var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var special = ['@', '%', '+', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'
 ];
-
+// declares user responses as an empty array when the page loads //
 var usersresponses = [];
 
 
-// creating a function to ask qualifying questions for the users password //
+
+// Prompts user questions and generates password based on responses //
 
   function generatePassword() {
-    var length = prompt("How long of a password? It can be between 8 and 128 characters");
+    var passwordLength = prompt("How long of a password? It can be between 8 and 128 characters");
+    // validates password length //
+    if (passwordLength < 8 || passwordLength > 128) {
+      alert("Must be within 8 and 128 characters!");
+      return;
+    }
     var askNumbers = confirm("Do you want to include numbers in your password?");
     var askLowerCase = confirm("Do you want any lowercase letters in your password?");
     var askUpperCase = confirm("Do you want any upper case letters in your password?");
     var askSpecial = confirm("Do you want to include special characters in your password?");
-    var answers = {
-      length: length,
-      askNumbers: askNumbers,
-      askLowerCase: askLowerCase,
-      askUpperCase: askUpperCase,
-      askSpecial: askSpecial
-    }
+    // sets the userresponses to an empty array when the user chooses to make another password//
+    // this prevents the array from having unwanted characters and possible duplicates //
+    usersresponses = [];
       // if the user wants numbers this adds their response to the pool characters //
-      console.log(answers);
       if (askNumbers === true) {
         usersresponses = usersresponses.concat(numbers)
       }
-      console.log(usersresponses);
   
       // if the user wants an uppercase letter this adds their response to the pool of characters //
       if (askUpperCase === true) {
         usersresponses = usersresponses.concat(upperCase)
       }
-      console.log(usersresponses);
   
       // if the user wants a lowercase letter this adds their response to the pool of characters //
       if (askLowerCase === true) {
         usersresponses = usersresponses.concat(lowerCase)
       }
-      console.log(usersresponses);
   
       // if the user wants a special character this adds their response to the pool of characters //
       if (askSpecial === true) {
         usersresponses = usersresponses.concat(special)
       }
-      console.log(usersresponses); 
   
       // if the user happens to say they dont want any of the character options they will be alerted that they must choose something //
       if (askNumbers === false && askUpperCase === false && askLowerCase === false && askSpecial === false) {
         alert("Must pick atleast one!");
+        return;
         
         
       }
       // this randomizes based on the legnth of the password the user selects //
-      for (i=0; i<length; i++) {
+      var passwordStr = "";
+
+      for (i=0; i<passwordLength; i++) {
         var rannum = Math.floor(Math.random()* usersresponses.length);
-        console.log(usersresponses[rannum]);
+        passwordStr = passwordStr + usersresponses[rannum];
       }
-    var passwordStr;
 
     return passwordStr;
 }
