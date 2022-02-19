@@ -1,6 +1,8 @@
 # Password-Gen
+Github Repo: https://github.com/SamiF812/Password-Gen
+Deployed App: https://samif812.github.io/Password-Gen/
 
-
+![Password-gen](./Assets/Password-gen.png)
 
 
 
