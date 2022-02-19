@@ -12,7 +12,7 @@ var usersresponses = [];
 // creating a function to ask qualifying questions for the users password //
 
   function generatePassword() {
-    var length = prompt("How long of a password? can be between 8 and 128 characters");
+    var length = prompt("How long of a password? It can be between 8 and 128 characters");
     var askNumbers = confirm("Do you want to include numbers in your password?");
     var askLowerCase = confirm("Do you want any lowercase letters in your password?");
     var askUpperCase = confirm("Do you want any upper case letters in your password?");
@@ -24,31 +24,38 @@ var usersresponses = [];
       askUpperCase: askUpperCase,
       askSpecial: askSpecial
     }
+      // if the user wants numbers this adds their response to the pool characters //
       console.log(answers);
       if (askNumbers === true) {
         usersresponses = usersresponses.concat(numbers)
       }
       console.log(usersresponses);
   
+      // if the user wants an uppercase letter this adds their response to the pool of characters //
       if (askUpperCase === true) {
         usersresponses = usersresponses.concat(upperCase)
       }
       console.log(usersresponses);
   
+      // if the user wants a lowercase letter this adds their response to the pool of characters //
       if (askLowerCase === true) {
         usersresponses = usersresponses.concat(lowerCase)
       }
       console.log(usersresponses);
   
+      // if the user wants a special character this adds their response to the pool of characters //
       if (askSpecial === true) {
         usersresponses = usersresponses.concat(special)
       }
       console.log(usersresponses); 
   
+      // if the user happens to say they dont want any of the character options they will be alerted that they must choose something //
       if (askNumbers === false && askUpperCase === false && askLowerCase === false && askSpecial === false) {
         alert("Must pick atleast one!");
         
+        
       }
+      // this randomizes based on the legnth of the password the user selects //
       for (i=0; i<length; i++) {
         var rannum = Math.floor(Math.random()* usersresponses.length);
         console.log(usersresponses[rannum]);
