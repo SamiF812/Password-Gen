@@ -30,3 +30,6 @@ I also wrote an alert that if for somereason the user does not say yes for any o
 When all questions are responded to a random password fitting the critera will be generated.
 
 The randomly generated password will appear in the box on the page.
+
+Email: DjSamiF@gmail.com
+Phone: 201-468-2130
